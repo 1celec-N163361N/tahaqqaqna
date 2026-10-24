@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Badge, Btn, Card, CardHead, Icon, Portrait } from '../components/ui'
+import PhotoGuide from '../components/PhotoGuide'
 
 const PENDING = [
   'الأبعاد والدقة',
@@ -11,6 +12,7 @@ const PENDING = [
 
 export default function Step4Photo({ photoSrc, photo, photoOk, photoChecks, onPick, onSample, onCheck, onNext, onBack }) {
   const fileRef = useRef(null)
+  const [guide, setGuide] = useState(false)
 
   return (
     <Card>
@@ -18,12 +20,14 @@ export default function Step4Photo({ photoSrc, photo, photoOk, photoChecks, onPi
         title="صورة الهوية الوطنية"
         sub="ارفع صورة حديثة للمتقدّم وفق الاشتراطات الرسمية المعتمدة."
         aside={
-          <Btn variant="soft" size="sm" onClick={() => onCheck('guide')}>
-            <Icon name="info" size={14} />
+          <Btn variant="soft" size="sm" onClick={() => setGuide(true)}>
+            <Icon name="camera" size={14} />
             شاهد كيف تجهّز صورتك
           </Btn>
         }
       />
+
+      <PhotoGuide open={guide} onClose={() => setGuide(false)} />
 
       <div className="g4">
         <div>

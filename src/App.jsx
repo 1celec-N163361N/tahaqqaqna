@@ -143,11 +143,7 @@ export default function App() {
     set({ dependent: id, evidence: { ...state.evidence, civil: true } })
   }
 
-  const checkPhoto = (mode) => {
-    if (mode === 'guide') {
-      toast('الاشتراطات: خلفية فاتحة · وجه كامل · بلا نظارة · إضاءة متوازنة')
-      return
-    }
+  const checkPhoto = () => {
     const fail = state.scenario === 'photo'
     const checks = fail
       ? [

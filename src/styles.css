@@ -2816,3 +2816,147 @@ button {
     align-items: flex-start;
   }
 }
+
+/* ==========================================================================
+   PHOTO GUIDE MODAL
+   ========================================================================== */
+.gmodal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 22, 16, 0.62);
+  backdrop-filter: blur(5px);
+  animation: gmodal-in 0.18s ease;
+}
+
+@keyframes gmodal-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gmodal-card {
+  width: 100%;
+  max-width: 880px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 40px 90px -30px rgba(3, 18, 12, 0.7);
+  animation: gmodal-pop 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes gmodal-pop {
+  from { transform: translateY(10px) scale(0.985); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+.gmodal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.gmodal-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 3px;
+  letter-spacing: -0.2px;
+}
+
+.gmodal-head p {
+  font-size: 11.5px;
+  color: var(--ink-400);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.gmodal-x {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink-500);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.gmodal-x:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.gmodal-video {
+  background: #0a1410;
+  line-height: 0;
+}
+
+.gmodal-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #0a1410;
+}
+
+.gmodal-chips {
+  list-style: none;
+  margin: 0;
+  padding: 13px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.gmodal-chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--em-700, #0a4d33);
+  background: var(--em-50);
+  border: 1px solid #d9ece3;
+  border-radius: 999px;
+  padding: 5px 11px;
+}
+
+.gmodal-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  flex-wrap: wrap;
+}
+
+.gmodal-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--ink-400);
+}
+
+@media (max-width: 860px) {
+  .gmodal {
+    padding: 12px;
+  }
+
+  .gmodal-foot {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}
