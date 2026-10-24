@@ -2,8 +2,9 @@ import React from 'react'
 import { STEPS } from '../data'
 import { Icon } from './ui'
 
-export default function Header({ scenario, onScenario, onReview, onReset, onNetDrop, reviewOpen, current, view }) {
+export default function Header({ scenario, onScenario, onReview, onReset, onNetDrop, reviewOpen, current, view, onCrumb }) {
   const step = STEPS[Math.min(Math.max(current, 1), 7) - 1]
+  const nav = onCrumb || (() => {})
 
   return (
     <>
@@ -17,13 +18,19 @@ export default function Header({ scenario, onScenario, onReview, onReset, onNetD
 
       <header className="topbar">
         <nav className="crumbs" aria-label="مسار التنقل">
-          <span>الرئيسية</span>
+          <button type="button" className="crumb" onClick={() => nav('home')} title="اضغط للرجوع إلى الرئيسية">
+            الرئيسية
+          </button>
           <Icon name="chev" size={13} />
-          <span>الأحوال المدنية</span>
+          <button type="button" className="crumb" onClick={() => nav('service')} title="اضغط للرجوع إلى الأحوال المدنية">
+            الأحوال المدنية
+          </button>
           <Icon name="chev" size={13} />
-          <span>إصدار أول هوية</span>
+          <button type="button" className="crumb" onClick={() => nav('start')} title="اضغط للرجوع إلى بداية الخدمة">
+            إصدار أول هوية
+          </button>
           <Icon name="chev" size={13} />
-          <b>{view === 'review' ? 'لوحة المراجع' : view === 'intro' ? 'المقدمة' : step.label}</b>
+          <b aria-current="page">{view === 'review' ? 'لوحة المراجع' : view === 'intro' ? 'المقدمة' : step.label}</b>
         </nav>
 
         <div className="tb-actions">

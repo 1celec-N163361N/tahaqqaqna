@@ -448,7 +448,7 @@ button {
 .crumbs {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 3px;
   font-size: 12px;
   color: var(--ink-400);
   min-width: 0;
@@ -458,10 +458,43 @@ button {
   white-space: nowrap;
 }
 
+/* بنود المسار قابلة للرجوع — ضغطة واحدة ترجّعك */
+.crumbs .crumb {
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-400);
+  background: transparent;
+  border: 0;
+  padding: 3px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.14s ease, background 0.14s ease;
+}
+
+.crumbs .crumb:hover {
+  color: var(--em-600);
+  background: var(--em-50);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.crumbs .crumb:active {
+  background: #e4f1ea;
+}
+
+.crumbs .crumb:focus-visible {
+  outline: 2px solid var(--em-500);
+  outline-offset: 1px;
+}
+
 .crumbs b {
   color: var(--ink);
   font-weight: 600;
   white-space: nowrap;
+  padding: 3px 0;
 }
 
 .crumbs svg {

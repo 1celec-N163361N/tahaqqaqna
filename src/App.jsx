@@ -316,6 +316,16 @@ export default function App() {
           reviewOpen={view === 'review'}
           current={state.step}
           view={view}
+          onCrumb={(t) => {
+            if (t === 'start') {
+              setView('flow')
+              go(1)
+              toast('رجعت إلى بداية الخدمة')
+            } else {
+              setView('intro')
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
         />
 
         <main className="page">
