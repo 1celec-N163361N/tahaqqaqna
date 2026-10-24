@@ -4,7 +4,7 @@ import { Btn, Icon } from './ui'
 const RULES = [
   { icon: 'camera', t: 'انظري إلى عدسة الكاميرا' },
   { icon: 'users', t: 'الطرحة على حدود الوجه' },
-  { icon: 'alert', t: 'تعبير محايد بلا ابتسامة' },
+  { icon: 'alert', t: 'بلا تعابير بالوجه' },
   { icon: 'sun', t: 'خلفية فاتحة وإضاءة متوازنة' }
 ]
 
