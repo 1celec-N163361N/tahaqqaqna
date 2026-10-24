@@ -1,0 +1,22 @@
+# إعدادات البناء — تُقرأ تلقائيًا من منصات النشر (Netlify / CranL)
+# أمر البناء: تثبيت التبعيات ثم بناء Vite
+# مجلد الناتج: dist
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# الأصول ذات البصمة — كاش طويل
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# الفيديو — كاش أسبوع
+[[headers]]
+  for = "/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
