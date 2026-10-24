@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { Badge, Btn, Card, CardHead, Field, Icon, Portrait } from '../components/ui'
 
+const DEMO_CODE = '4821'
+
 export default function Step6Confirm({ dependent, photoSrc, otpOk, onSendOtp, onVerify, onNext, onBack }) {
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState(DEMO_CODE)
 
   return (
     <Card>
@@ -42,7 +44,14 @@ export default function Step6Confirm({ dependent, photoSrc, otpOk, onSendOtp, on
               أُرسل رمز من 4 أرقام إلى جوال ولي الأمر 05•••••123
             </p>
           </div>
-          <Btn variant="ghost" size="sm" onClick={onSendOtp}>
+          <Btn
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              setCode(DEMO_CODE)
+              onSendOtp()
+            }}
+          >
             <Icon name="lock" size={13} />
             إرسال الرمز
           </Btn>
@@ -65,7 +74,7 @@ export default function Step6Confirm({ dependent, photoSrc, otpOk, onSendOtp, on
           {otpOk && <Badge>تم التحقق</Badge>}
         </div>
         <p style={{ fontSize: 11.5, color: 'var(--ink-400)', marginTop: 10 }}>
-          في النموذج التجريبي يظهر الرمز في تنبيه عند الضغط على «إرسال الرمز».
+          الرمز مُعبّأ تلقائيًا للتجربة — اضغط «تحقق» للمتابعة.
         </p>
       </div>
 
