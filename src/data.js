@@ -15,11 +15,10 @@ export const WEIGHTS = [
   { key: 'nafath', w: 40, name: 'تحقق نفاذ من ولي الأمر', color: '#0a4d33' },
   { key: 'civil', w: 27, name: 'مطابقة السجل المدني', color: '#12784e' },
   { key: 'photo', w: 20, name: 'صورة مطابقة للاشتراطات', color: '#17945f' },
-  { key: 'liveness', w: 25, name: 'جلسة حيّة بتحديات حركية', color: '#3cb07c' },
-  { key: 'social', w: 13, name: 'مصادقة اجتماعية (اختيارية)', color: '#7fcca6' }
+  { key: 'liveness', w: 25, name: 'جلسة حيّة بتحديات حركية', color: '#3cb07c' }
 ]
 
-export const WMAX = 125
+export const WMAX = 112
 export const THRESHOLD = 75
 
 export const DEPENDENTS = [
@@ -59,7 +58,8 @@ export const REVIEW_CASES = [
     photo: idFemale,
     score: 68,
     missing: ['liveness'],
-    reason: 'لم يكتمل التحدي الحركي — توقف الفيديو عند الثانية 2 من 5'
+    reason: 'لم يكتمل التحدي الحركي — توقف التسجيل قبل نهايته',
+    hint: 'لا يمكن الحكم على مطابقة الوجه بدون الجلسة الحيّة — أعِد الجلسة مع المتقدم.'
   },
   {
     id: 'TQ-2026-00422',
@@ -67,7 +67,8 @@ export const REVIEW_CASES = [
     photo: idMale,
     score: 61,
     missing: ['civil'],
-    reason: 'تعارض في تاريخ الميلاد بين الوثيقة والسجل المدني (فرق يوم واحد)'
+    reason: 'تعارض في تاريخ الميلاد بين الوثيقة والسجل المدني (فرق يوم واحد)',
+    hint: 'راجع الوثيقة المرفقة يدويًا — إن كان تاريخها صحيحًا فوثّق التعارض وأعد التصحيح.'
   },
   {
     id: 'TQ-2026-00423',
@@ -75,7 +76,8 @@ export const REVIEW_CASES = [
     photo: idFemale,
     score: 72,
     missing: ['photo'],
-    reason: 'زاوية الرأس 18° تتجاوز الحد ±10° — الصورة غير معتمدة'
+    reason: 'الصورة غير مقبولة: الوجه مائل عن الوضع المستقيم — راجع وضوح الملامح قبل القرار',
+    hint: 'إن كانت الملامح واضحة ويمكن مطابقتها، يمكنك الموافقة مع تسجيل سبب «مطابقة بعد المراجعة اليدوية».'
   }
 ]
 
@@ -83,6 +85,5 @@ export const EMPTY_EVIDENCE = {
   nafath: false,
   civil: false,
   photo: false,
-  liveness: false,
-  social: false
+  liveness: false
 }

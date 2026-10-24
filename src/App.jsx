@@ -55,8 +55,7 @@ function seed() {
       nafath: QSTEP >= 2,
       civil: QSTEP >= 3,
       photo: QSTEP >= 5,
-      liveness: QSTEP >= 6,
-      social: false
+      liveness: QSTEP >= 6
     }
   }
 }
@@ -153,10 +152,10 @@ export default function App() {
     const checks = fail
       ? [
           { ok: false, t: 'ملامح الوجه غير واضحة — الإضاءة غير متوازنة على نصف الوجه' },
-          { ok: true, t: 'الأبعاد 900×600 بكسل' },
-          { ok: false, t: 'زاوية الرأس 14° تتجاوز الحد ±10°' },
+          { ok: true, t: 'أبعاد الصورة مناسبة' },
+          { ok: false, t: 'الوجه مائل عن الوضع المستقيم — اجعل رأسك مستقيمًا وأعد التصوير' },
           { ok: true, t: 'الوجه في وسط الإطار' },
-          { ok: false, t: 'الوضوح منخفض (32%) — الصورة مهزوزة' }
+          { ok: false, t: 'الصورة مهزوزة — ثبّت الجوال وأعد التصوير' }
         ]
       : null
     set({

@@ -82,6 +82,15 @@ export default function ReviewConsole({ onBack, onDecide }) {
               <b>سبب التحويل:</b> {c.reason}
             </div>
 
+            {c.hint && (
+              <div className="case-hint">
+                <Icon name="info" size={13} />
+                <span>
+                  <b>المطلوب منك:</b> {c.hint}
+                </span>
+              </div>
+            )}
+
             <div className="case-actions">
               <select aria-label="سبب القرار">
                 {REASONS.map((r) => (

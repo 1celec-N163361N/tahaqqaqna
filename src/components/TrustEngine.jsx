@@ -5,7 +5,7 @@ import { Badge, Card, CardHead, Dial, Icon } from './ui'
 export default function TrustEngine({ evidence, onToggle }) {
   const raw = WEIGHTS.reduce((sum, e) => sum + (evidence[e.key] ? e.w : 0), 0)
   const pct = Math.round((raw / WMAX) * 100)
-  const missing = WEIGHTS.filter((e) => !evidence[e.key] && e.key !== 'social')
+  const missing = WEIGHTS.filter((e) => !evidence[e.key])
   const hardBlock = !evidence.liveness
   const accept = !hardBlock && pct >= THRESHOLD
   const tone = accept ? '#12784e' : '#b07a14'
@@ -14,7 +14,7 @@ export default function TrustEngine({ evidence, onToggle }) {
     <Card>
       <CardHead
         title="محرك الثقة التكيّفي"
-        sub="لا يوجد قرار واحد «قبول أو رفض» — بل سلسلة أدلة موزونة، والناتج يُقسم على 125."
+        sub={`لا يوجد قرار واحد «قبول أو رفض» — بل سلسلة أدلة موزونة، والناتج يُقسم على ${WMAX}.`}
         aside={<Badge tone="neutral">{raw} من {WMAX} نقطة</Badge>}
       />
 
