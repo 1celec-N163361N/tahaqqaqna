@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.gitignore
+deploy
+README.md
+DEPLOY.md
+*.md
+.vscode
+.idea
+.DS_Store
