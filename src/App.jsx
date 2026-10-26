@@ -13,7 +13,7 @@ import Step5Liveness from './steps/Step5Liveness'
 import Step6Confirm from './steps/Step6Confirm'
 import Step7Result from './steps/Step7Result'
 
-const KEY = 'tq_react_v2'
+const KEY = 'tq_react_v3'
 
 const INIT = {
   step: 1,
@@ -139,8 +139,21 @@ export default function App() {
     }
   }
 
+  /* الاختيار لا يمنح أي دليل — مجرد تحديد هوية التابع */
   const selectDependent = (id) => {
-    set({ dependent: id, evidence: { ...state.evidence, civil: true } })
+    if (id === state.dependent) return
+    set({ dependent: id, evidence: { ...state.evidence, civil: false } })
+  }
+
+  /* دليل السجل المدني يُسجَّل بعد المطابقة فقط */
+  const confirmDependent = () => {
+    setState((s) => ({
+      ...s,
+      step: 3,
+      evidence: { ...s.evidence, civil: true }
+    }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    toast('تمت مطابقة السجل المدني — بيانات التابع مطابقة')
   }
 
   const checkPhoto = () => {
@@ -219,7 +232,7 @@ export default function App() {
       key="s2"
       selected={state.dependent}
       onSelect={selectDependent}
-      onNext={() => go(3)}
+      onConfirm={confirmDependent}
       onBack={() => go(1)}
     />,
     <Step3Consent

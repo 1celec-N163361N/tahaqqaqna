@@ -881,6 +881,47 @@ button {
   flex-wrap: wrap;
 }
 
+/* ---------- dependent verification ---------- */
+.verify-strip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  background: var(--em-50);
+  border: 1px solid var(--em-100);
+  color: var(--em-700);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.spin-s {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  border-top-color: #fff;
+  display: inline-block;
+  animation: spin 0.7s linear infinite;
+}
+
+.verify-strip .spin-s {
+  border-color: var(--em-100);
+  border-top-color: var(--em-500);
+}
+
+.linkish:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dep:disabled {
+  cursor: progress;
+}
+
+
 .note {
   background: var(--surface-2);
   border: 1px solid var(--line);
